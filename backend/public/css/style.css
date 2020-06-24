@@ -1,0 +1,20 @@
+.remove-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+
+.remove-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.credentionals-label {
+    /* font-size: calc(20px + (32 - 22) * ((100vw - 1280px) / (2560 - 1280))); */
+    padding: 0.2rem;
+}
+
+.label {
+    /* font-size: calc(18px + (36 - 18) * ((100vw - 1280px) / (2560 - 1280))); */
+}
+
+a { color: inherit; }
+a:hover { color: inherit; } 

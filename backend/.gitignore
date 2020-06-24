@@ -1,0 +1,14 @@
+.vscode/
+.idea/
+/coverage/
+
+composer.phar
+composer
+/vendor/
+
+/logs/*
+!/logs/README.md
+
+#public/*
+!public/.htaccess
+!public/index.php
