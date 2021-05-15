@@ -5,14 +5,22 @@ use App\Handler\HttpErrorHandler;
 use DI\ContainerBuilder;
 use Slim\App;
 
-require_once __DIR__ . '/defines.php';
-require_once __DIR__ . '/../vendor/autoload.php';
+// require_once __DIR__ . '/config/defines.php';
+require_once __DIR__ . '/vendor/autoload.php';
+
+define('ROOT_DIR', dirname(realpath(__FILE__)));
+
+if (is_readable(__DIR__ . '/.env')) {
+    $dotenv = \Dotenv\Dotenv::createImmutable(__DIR__ . '/');
+    $dotenv->load();
+}
+
 
 // Instantiate PHP-DI ContainerBuilder
 $containerBuilder = new ContainerBuilder();
 
 // Set up dependencies
-$containerBuilder->addDefinitions(__DIR__ . '/dependencies.php');
+$containerBuilder->addDefinitions(__DIR__ . '/config/dependencies.php');
 
 // Build PHP-DI Container instance
 $container = $containerBuilder->build();
@@ -48,10 +56,10 @@ $app = $container->get(App::class);
 // $errorMiddleware->setDefaultErrorHandler($errorHandler);
 
 // Register middleware
-(require_once __DIR__ . '/middleware.php')($app, $container);
+(require_once __DIR__ . '/config/middleware.php')($app, $container);
 
 // Register routes
-(require_once __DIR__ . '/routes.php')($app, $container);
+(require_once __DIR__ . '/config/routes.php')($app, $container);
 
 // Run app
 $app->run();

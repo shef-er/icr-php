@@ -1,4 +1,9 @@
-## SETUP
+## [DEPRECATED]
+
+This project is old and deprecated. Some data needed for correct work lost and cannot be restored.
+Stored here as a reminder of my old mistakes.
+
+### SETUP
 
 ```sh
 ## Install PHP with extensions (for composer)

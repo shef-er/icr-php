@@ -1,10 +1,11 @@
-.vscode/
-.idea/
+.vscode/*
+.idea/*
 /coverage/
 
 composer.phar
 composer
 /vendor/
+.env
 
 /logs/*
 !/logs/README.md

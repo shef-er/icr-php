@@ -15,30 +15,29 @@ return [
 
     'logger' => [
         'name'  => 'ICR',
-        'path'  => isset($_ENV['docker']) ? 'php://stdout' : __DIR__ . '/../logs/app.log',
+        'path'  => isset($_ENV['docker']) ? 'php://stdout' : ROOT_DIR . getenv("LOGS_DIR"),
         'level' => Logger::DEBUG,
     ],
 
     'database' => [
         'driver'    => 'pdo_pgsql',
-        'host'      => DB_HOST,
-        'user'      => DB_USER,
-        'password'  => DB_PASS,
-        'dbname'    => DB_NAME,
+        'host'      => getenv('DB_HOST'),
+        'user'      => getenv('DB_USER'),
+        'password'  => getenv('DB_PASS'),
+        'dbname'    => getenv('DB_NAME'),
     ],
 
     'google_client' => [
         'config' => [
-            'application_name'  => 'Svarta',
-            'client_id'         => '860134715289-59jrq9stg5pafairm9l6tcbhi7i54jof.apps.googleusercontent.com',
-            'client_secret'     => 'VbSm1Bm0SGw3TGXDr-YU-Iab',
+            'application_name'  => getenv('GAPP_NAME'),
+            'client_id'         => getenv('GAPP_CLIENT_ID'),
+            'client_secret'     => getenv('GAPP_CLIENT_SECRET'),
         ],
         'scopes' => [
             'email',
             'profile'
         ],
-        'redirect_uri' => 'http://localhost/api/login'
-        // 'redirect_uri' => 'http://v167714.hosted-by-vdsina.ru/api/login'
+        'redirect_uri' => getenv('GAPP_REDIRECT_URL')
     ],
 
     'permissions' => [
